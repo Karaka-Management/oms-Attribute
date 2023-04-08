@@ -111,9 +111,9 @@ final class ApiController extends Controller
     private function validateAttributeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['type'] = empty($request->getData('type')))
-            || ($val['value'] = (empty($request->getData('value')) && empty($request->getData('custom'))))
-            || ($val['ref'] = empty($request->getData('ref')))
+        if (($val['type'] = !$request->hasData('type'))
+            || ($val['value'] = (!$request->hasData('value') && !$request->hasData('custom')))
+            || ($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }
@@ -181,8 +181,8 @@ final class ApiController extends Controller
     private function validateAttributeTypeL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
-            || ($val['type'] = empty($request->getData('type')))
+        if (($val['title'] = !$request->hasData('title'))
+            || ($val['type'] = !$request->hasData('type'))
         ) {
             return $val;
         }
@@ -252,8 +252,8 @@ final class ApiController extends Controller
     private function validateAttributeTypeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
-            || ($val['name'] = empty($request->getData('name')))
+        if (($val['title'] = !$request->hasData('title'))
+            || ($val['name'] = !$request->hasData('name'))
         ) {
             return $val;
         }
@@ -337,8 +337,8 @@ final class ApiController extends Controller
     private function validateAttributeValueCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['type'] = empty($request->getData('type')))
-            || ($val['value'] = empty($request->getData('value')))
+        if (($val['type'] = !$request->hasData('type'))
+            || ($val['value'] = !$request->hasData('value'))
         ) {
             return $val;
         }
@@ -406,8 +406,8 @@ final class ApiController extends Controller
     private function validateAttributeValueL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
-            || ($val['value'] = empty($request->getData('value')))
+        if (($val['title'] = !$request->hasData('title'))
+            || ($val['value'] = !$request->hasData('value'))
         ) {
             return $val;
         }
