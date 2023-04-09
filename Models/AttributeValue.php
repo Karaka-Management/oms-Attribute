@@ -160,8 +160,8 @@ class AttributeValue implements \JsonSerializable
     /**
      * Set value
      *
-     * @param int|string|float $value    Value
-     * @param int              $datatype Datatype
+     * @param mixed $value    Value
+     * @param int   $datatype Datatype
      *
      * @return void
      *
