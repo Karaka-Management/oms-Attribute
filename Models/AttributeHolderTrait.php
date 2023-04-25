@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Modules\Attribute\Models;
 
 /**
- * Item class.
+ * Attribute class.
  *
  * @package Modules\Attribute\Models
  * @license OMS License 2.0
@@ -25,9 +25,17 @@ namespace Modules\Attribute\Models;
 trait AttributeHolderTrait
 {
     /**
-     * Add attribute to item
+     * Attributes.
      *
-     * @param Attribute $attribute Note
+     * @var \Modules\Attribute\Models\Attribute[]
+     * @since 1.0.0
+     */
+    private array $attributes = [];
+
+    /**
+     * Add attribute
+     *
+     * @param Attribute $attribute Attribute
      *
      * @return void
      *
