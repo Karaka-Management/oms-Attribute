@@ -84,11 +84,11 @@ trait AttributeHolderTrait
      *
      * @param string $attrName Attribute name
      *
-     * @return null|Attribute
+     * @return Attribute
      *
      * @since 1.0.0
      */
-    public function getAttribute(string $attrName) : ?Attribute
+    public function getAttribute(string $attrName) : Attribute
     {
         foreach ($this->attributes as $attribute) {
             if ($attribute->type->name === $attrName) {
@@ -96,6 +96,6 @@ trait AttributeHolderTrait
             }
         }
 
-        return null;
+        return new NullAttribute();
     }
 }

@@ -290,7 +290,7 @@ final class ApiController extends Controller
             $this->createModelRelation(
                 $request->header->account,
                 (int) $request->getData('type'),
-                $attrValue->getId(),
+                $attrValue->id,
                 AttributeTypeMapper::class, 'defaults', '', $request->getOrigin()
             );
         }

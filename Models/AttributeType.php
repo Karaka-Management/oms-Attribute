@@ -33,7 +33,7 @@ class AttributeType implements \JsonSerializable
      * @var int
      * @since 1.0.0
      */
-    protected int $id = 0;
+    public int $id = 0;
 
     /**
      * Name/string identifier by which it can be found/categorized
@@ -49,7 +49,7 @@ class AttributeType implements \JsonSerializable
      * @var int
      * @since 1.0.0
      */
-    protected int $fields = 0;
+    public int $fields = 0;
 
     /**
      * Is a custom value allowed (e.g. custom string)
@@ -76,14 +76,14 @@ class AttributeType implements \JsonSerializable
      *
      * @var BaseStringL11n
      */
-    private string | BaseStringL11n $l11n = '';
+    public string | BaseStringL11n $l11n = '';
 
     /**
      * Possible default attribute values
      *
      * @var array
      */
-    private array $defaults = [];
+    public array $defaults = [];
 
     /**
      * Default attribute value
@@ -128,6 +128,20 @@ class AttributeType implements \JsonSerializable
      */
     public function getDefaultByValue(mixed $value) : AttributeValue
     {
+        $value = null;
+        if ($this->datatype === AttributeValueType::_STRING) {
+            $value = (string) $value;
+        } elseif ($this->datatype === AttributeValueType::_INT
+            || $this->datatype === AttributeValueType::_FLOAT_INT
+            || $this->datatype === AttributeValueType::_BOOL
+        ) {
+            $value = (int) $value;
+        } elseif ($this->datatype === AttributeValueType::_FLOAT) {
+            $value = (float) $value;
+        } elseif ($this->datatype === AttributeValueType::_DATETIME) {
+            $value = new \DateTime((string) $value);
+        }
+
         foreach ($this->defaults as $default) {
             if ($default->getValue() === $value) {
                 return $default;

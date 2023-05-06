@@ -30,7 +30,7 @@ class Attribute implements \JsonSerializable
      * @var int
      * @since 1.0.0
      */
-    protected int $id = 0;
+    public int $id = 0;
 
     /**
      *  this attribute belongs to
@@ -65,6 +65,14 @@ class Attribute implements \JsonSerializable
     {
         $this->type  = new NullAttributeType();
         $this->value = new NullAttributeValue();
+    }
+
+    public function deepClone() : self
+    {
+        $clone = clone $this;
+        $clone->value = clone $this->value;
+
+        return $clone;
     }
 
     /**

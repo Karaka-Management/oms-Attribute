@@ -35,7 +35,7 @@ class AttributeValue implements \JsonSerializable
      * @var int
      * @since 1.0.0
      */
-    protected int $id = 0;
+    public int $id = 0;
 
     /**
      * Depending attribute type
@@ -106,7 +106,7 @@ class AttributeValue implements \JsonSerializable
      *
      * @var null|BaseStringL11n
      */
-    private ?BaseStringL11n $l11n = null;
+    public ?BaseStringL11n $l11n = null;
 
     /**
      * Get id
