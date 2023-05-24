@@ -128,22 +128,22 @@ class AttributeType implements \JsonSerializable
      */
     public function getDefaultByValue(mixed $value) : AttributeValue
     {
-        $value = null;
+        $mValue = null;
         if ($this->datatype === AttributeValueType::_STRING) {
-            $value = (string) $value;
+            $mValue = (string) $value;
         } elseif ($this->datatype === AttributeValueType::_INT
             || $this->datatype === AttributeValueType::_FLOAT_INT
             || $this->datatype === AttributeValueType::_BOOL
         ) {
-            $value = (int) $value;
+            $mValue = (int) $value;
         } elseif ($this->datatype === AttributeValueType::_FLOAT) {
-            $value = (float) $value;
+            $mValue = (float) $value;
         } elseif ($this->datatype === AttributeValueType::_DATETIME) {
-            $value = new \DateTime((string) $value);
+            $mValue = new \DateTime((string) $value);
         }
 
         foreach ($this->defaults as $default) {
-            if ($default->getValue() === $value) {
+            if ($default->getValue() === $mValue) {
                 return $default;
             }
         }

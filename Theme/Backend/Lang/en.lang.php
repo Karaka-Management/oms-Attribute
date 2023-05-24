@@ -13,5 +13,14 @@
 declare(strict_types=1);
 
 return ['Attribute' => [
-    'Accounts/Groups' => 'Accounts/Groups',
+    'AttributeTypes' => 'Attribute Types',
+    'Attribute' => 'Attribute',
+    'Name' => 'Name',
+    'Title' => 'Title',
+    'Datatype' => 'Datatype',
+    'Status' => 'Status',
+    'DefaultValues' => 'Default Values',
+    'Pattern' => 'Pattern',
+    'IsRequired' => 'Is required?',
+    'CustomValue' => 'Custom values allowed?',
 ]];

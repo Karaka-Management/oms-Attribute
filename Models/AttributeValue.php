@@ -192,13 +192,13 @@ class AttributeValue implements \JsonSerializable
      */
     public function getValue() : mixed
     {
-        if (!empty($this->valueStr)) {
+        if ($this->valueStr !== null) {
             return $this->valueStr;
-        } elseif (!empty($this->valueInt)) {
+        } elseif ($this->valueInt !== null) {
             return $this->valueInt;
-        } elseif (!empty($this->valueDec)) {
+        } elseif ($this->valueDec !== null) {
             return $this->valueDec;
-        } elseif ($this->valueDat instanceof \DateTimeInterface) {
+        } elseif ($this->valueDat !== null) {
             return $this->valueDat;
         }
 
