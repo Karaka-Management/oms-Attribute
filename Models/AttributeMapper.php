@@ -37,7 +37,7 @@ final class AttributeMapper extends DataMapperFactory
      */
     public const COLUMNS = [
         'attribute_attr_id'    => ['name' => 'attribute_attr_id',    'type' => 'int', 'internal' => 'id'],
-        'attribute_attr_ref'  => ['name' => 'attribute_attr_ref',  'type' => 'int', 'internal' => 'ref'],
+        'attribute_attr_ref'   => ['name' => 'attribute_attr_ref',  'type' => 'int', 'internal' => 'ref'],
         'attribute_attr_type'  => ['name' => 'attribute_attr_type',  'type' => 'int', 'internal' => 'type'],
         'attribute_attr_value' => ['name' => 'attribute_attr_value', 'type' => 'int', 'internal' => 'value'],
     ];

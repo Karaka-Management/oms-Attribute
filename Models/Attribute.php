@@ -69,7 +69,7 @@ class Attribute implements \JsonSerializable
 
     public function deepClone() : self
     {
-        $clone = clone $this;
+        $clone        = clone $this;
         $clone->value = clone $this->value;
 
         return $clone;
@@ -94,7 +94,7 @@ class Attribute implements \JsonSerializable
     {
         return [
             'id'    => $this->id,
-            'ref'  => $this->ref,
+            'ref'   => $this->ref,
             'type'  => $this->type,
             'value' => $this->value,
         ];

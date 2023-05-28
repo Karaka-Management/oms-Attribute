@@ -14,12 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\Attribute\Controller;
 
-use phpOMS\Asset\AssetType;
-use phpOMS\Contract\RenderableInterface;
-use phpOMS\Message\RequestAbstract;
-use phpOMS\Message\ResponseAbstract;
-use phpOMS\Views\View;
-
 /**
  * Attribute controller class.
  *
@@ -30,5 +24,4 @@ use phpOMS\Views\View;
  */
 final class BackendController extends Controller
 {
-
 }
