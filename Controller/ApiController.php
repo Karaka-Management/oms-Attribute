@@ -58,7 +58,7 @@ final class ApiController extends Controller
     public function apiAttributeCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateAttributeCreate($request))) {
-            $response->set('attribute_create', new FormValidation($val));
+            $response->data['attribute_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -137,7 +137,7 @@ final class ApiController extends Controller
     public function apiAttributeTypeL11nCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateAttributeTypeL11nCreate($request))) {
-            $response->set('attr_type_l11n_create', new FormValidation($val));
+            $response->data['attr_type_l11n_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -206,7 +206,7 @@ final class ApiController extends Controller
     public function apiAttributeTypeCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateAttributeTypeCreate($request))) {
-            $response->set('attr_type_create', new FormValidation($val));
+            $response->data['attr_type_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -277,7 +277,7 @@ final class ApiController extends Controller
     public function apiAttributeValueCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateAttributeValueCreate($request))) {
-            $response->set('attr_value_create', new FormValidation($val));
+            $response->data['attr_value_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -362,7 +362,7 @@ final class ApiController extends Controller
     public function apiAttributeValueL11nCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateAttributeValueL11nCreate($request))) {
-            $response->set('attr_value_l11n_create', new FormValidation($val));
+            $response->data['attr_value_l11n_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
