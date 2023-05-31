@@ -59,7 +59,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateAttributeCreate($request))) {
             $response->data['attribute_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status           = RequestStatusCode::R_400;
 
             return;
         }
@@ -138,7 +138,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateAttributeTypeL11nCreate($request))) {
             $response->data['attr_type_l11n_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status                = RequestStatusCode::R_400;
 
             return;
         }
@@ -207,7 +207,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateAttributeTypeCreate($request))) {
             $response->data['attr_type_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status           = RequestStatusCode::R_400;
 
             return;
         }
@@ -278,7 +278,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateAttributeValueCreate($request))) {
             $response->data['attr_value_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status            = RequestStatusCode::R_400;
 
             return;
         }
@@ -363,7 +363,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateAttributeValueL11nCreate($request))) {
             $response->data['attr_value_l11n_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status                 = RequestStatusCode::R_400;
 
             return;
         }

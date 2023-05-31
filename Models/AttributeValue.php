@@ -108,7 +108,6 @@ class AttributeValue implements \JsonSerializable
      */
     public ?BaseStringL11n $l11n = null;
 
-
     /**
      * Set l11n
      *
