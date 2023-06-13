@@ -67,6 +67,13 @@ class Attribute implements \JsonSerializable
         $this->value = new NullAttributeValue();
     }
 
+    /**
+     * Deep clone the attribute element
+     *
+     * @return self
+     *
+     * @since 1.0.0
+     */
     public function deepClone() : self
     {
         $clone        = clone $this;

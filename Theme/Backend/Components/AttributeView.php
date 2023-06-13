@@ -38,10 +38,28 @@ class AttributeView extends View
      */
     public array $attributes = [];
 
+    /**
+     * Attribute types
+     *
+     * @var \Modules\Attribute\Models\AttributeType[]
+     * @since 1.0.0
+     */
     public array $attributeTypes = [];
 
+    /**
+     * Units
+     *
+     * @var \Modules\Organization\Models\Unit[]
+     * @since 1.0.0
+     */
     public array $units = [];
 
+    /**
+     * API Uri for attribute actions
+     *
+     * @var string
+     * @since 1.0.0
+     */
     public string $apiUri = '';
 
     /**
@@ -59,10 +77,10 @@ class AttributeView extends View
     public function render(mixed ...$data) : string
     {
         /** @var array{0:\Modules\Attribute\Models\Attribute[]} $data */
-        $this->attributes = $data[0];
+        $this->attributes     = $data[0];
         $this->attributeTypes = $data[1];
-        $this->units = $data[2];
-        $this->apiUri = $data[3];
+        $this->units          = $data[2];
+        $this->apiUri         = $data[3];
 
         return parent::render();
     }
