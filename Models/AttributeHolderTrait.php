@@ -30,7 +30,7 @@ trait AttributeHolderTrait
      * @var \Modules\Attribute\Models\Attribute[]
      * @since 1.0.0
      */
-    private array $attributes = [];
+    public array $attributes = [];
 
     /**
      * Add attribute
