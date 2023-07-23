@@ -38,18 +38,6 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                     <input type="text" id="iAttributeId" name="id" data-tpl-text="/id" data-tpl-value="/id" disabled>
                 </div>
 
-                <!--
-                <div class="form-group">
-                    <label for="iAttributesLanguage"><?= $this->getHtml('Language', 'Attribute', 'Backend'); ?></label>
-                    <select id="iAttributesLanguage" name="language" data-tpl-text="/language" data-tpl-value="/language">
-                            <option value="">
-                        <?php foreach ($languages as $code => $language) : ?>
-                            <option value="<?= $this->printHtml($code); ?>" <?= $this->printHtml(\strtolower($code) === $l11n->language ? ' selected' : ''); ?>><?= $this->printHtml($language); ?>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                -->
-
                 <div class="form-group">
                     <label for="iAttributesType"><?= $this->getHtml('Type', 'Attribute', 'Backend'); ?></label>
                     <select id="iAttributesType" name="type" data-tpl-text="/type" data-tpl-value="/type">
