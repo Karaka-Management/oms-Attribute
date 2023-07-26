@@ -24,7 +24,7 @@ use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\RequestAbstract;
 
-trait ApiTraitController
+trait ApiAttributeTraitController
 {
     /**
      * Method to create item attribute from request.
