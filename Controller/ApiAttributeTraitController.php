@@ -249,8 +249,8 @@ trait ApiAttributeTraitController
     /**
      * Method to update Attribute from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param Attribute     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param Attribute       $new     Model to modify
      *
      * @return Attribute
      *
@@ -319,8 +319,8 @@ trait ApiAttributeTraitController
     /**
      * Method to update AttributeTypeL11n from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param BaseStringL11n     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param BaseStringL11n  $new     Model to modify
      *
      * @return BaseStringL11n
      *
@@ -383,8 +383,8 @@ trait ApiAttributeTraitController
     /**
      * Method to update AttributeType from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param AttributeType     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param AttributeType   $new     Model to modify
      *
      * @return AttributeType
      *
@@ -445,8 +445,8 @@ trait ApiAttributeTraitController
     /**
      * Method to update AttributeValue from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param AttributeValue     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param AttributeValue  $new     Model to modify
      *
      * @return AttributeValue
      *
@@ -509,8 +509,8 @@ trait ApiAttributeTraitController
     /**
      * Method to update AttributeValueL11n from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param BaseStringL11n     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param BaseStringL11n  $new     Model to modify
      *
      * @return BaseStringL11n
      *

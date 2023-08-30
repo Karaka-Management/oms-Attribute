@@ -18,8 +18,8 @@ use phpOMS\Uri\UriFactory;
 
 $attribute = $this->attributes;
 $languages = ISO639Enum::getConstants();
-$types = $this->attributeTypes;
-$units = $this->units;
+$types     = $this->attributeTypes;
+$units     = $this->units;
 
 /** @var \phpOMS\Localization\Localization $l11n */
 $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
