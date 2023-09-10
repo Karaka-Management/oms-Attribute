@@ -19,6 +19,14 @@ use phpOMS\Localization\BaseStringL11nType;
 use phpOMS\Localization\NullBaseStringL11nType;
 use phpOMS\Message\RequestAbstract;
 
+/**
+ * General localization api functionality.
+ *
+ * @package Modules\Attribute
+ * @license OMS License 2.0
+ * @link    https://jingga.app
+ * @since   1.0.0
+ */
 trait ApiLocalizationTraitController
 {
     /**

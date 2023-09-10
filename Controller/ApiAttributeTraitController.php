@@ -17,13 +17,20 @@ namespace Modules\Attribute\Controller;
 use Modules\Attribute\Models\Attribute;
 use Modules\Attribute\Models\AttributeType;
 use Modules\Attribute\Models\AttributeValue;
-use Modules\Attribute\Models\NullAttribute;
 use Modules\Attribute\Models\NullAttributeType;
 use Modules\Attribute\Models\NullAttributeValue;
 use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\RequestAbstract;
 
+/**
+ * General attribute api functionality.
+ *
+ * @package Modules\Attribute
+ * @license OMS License 2.0
+ * @link    https://jingga.app
+ * @since   1.0.0
+ */
 trait ApiAttributeTraitController
 {
     /**
@@ -174,6 +181,7 @@ trait ApiAttributeTraitController
     {
         $attrValue            = new AttributeValue();
         $attrValue->isDefault = $request->getDataBool('default') ?? false;
+        $attrValue->unit      = $request->getDataString('unit') ?? '';
         $attrValue->setValue($request->getDataString('value'), $type->datatype);
 
         if ($request->hasData('title')) {
@@ -258,8 +266,14 @@ trait ApiAttributeTraitController
      */
     public function updateAttributeFromRequest(RequestAbstract $request, Attribute $new) : Attribute
     {
-        if ($request->hasData('value')) {
-            $new->value = $request->hasData('value') ? new NullAttributeValue((int) $request->getData('value')) : $new->value;
+        if ($new->type->custom) {
+            if ($request->hasData('value')) {
+                $new->value = new NullAttributeValue((int) $request->getData('value'));
+            } else {
+                // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
+                $new->value = new AttributeValue();
+                $new->value->setValue($request->getData('custom'), $new->type->datatype);
+            }
         } else {
             // @todo: fix by only accepting the value id to be used
             // this is a workaround for now because the front end doesn't allow to dynamically show default values.
@@ -267,7 +281,7 @@ trait ApiAttributeTraitController
 
             // Couldn't find matching default value
             if ($value->id === 0) {
-                return new NullAttribute();
+                return $new;
             }
 
             $new->value = $value;
