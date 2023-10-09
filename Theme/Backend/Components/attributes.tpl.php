@@ -33,6 +33,8 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
             data-add-tpl="#attributeTable tbody .oms-add-tpl-attribute">
             <div class="portlet-head"><?= $this->getHtml('Attribute', 'Attribute', 'Backend'); ?></div>
             <div class="portlet-body">
+                <input type="hidden" id="iAttributeRef" name="ref" value="<?= $this->refId ?>" disabled>
+
                 <div class="form-group">
                     <label for="iAttributeId"><?= $this->getHtml('ID', '0', '0'); ?></label>
                     <input type="text" id="iAttributeId" name="id" data-tpl-text="/id" data-tpl-value="/id" disabled>
@@ -48,6 +50,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                     </select>
                 </div>
 
+                <!-- @todo: implement
                 <div class="form-group">
                     <label for="iAttributesUnit"><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?></label>
                     <select id="iAttributesUnit" name="unit" data-tpl-text="/unit" data-tpl-value="/unit">
@@ -58,6 +61,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                         <?php endforeach; ?>
                     </select>
                 </div>
+                -->
 
                 <div class="form-group">
                     <label for="iAttributeValue"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?></label>
@@ -67,7 +71,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
             <div class="portlet-foot">
                 <input id="bAttributeAdd" formmethod="put" type="submit" class="add-form" value="<?= $this->getHtml('Add', '0', '0'); ?>">
                 <input id="bAttributeSave" formmethod="post" type="submit" class="save-form hidden button save" value="<?= $this->getHtml('Update', '0', '0'); ?>">
-                <input type="submit" class="cancel-form hidden button close" value="<?= $this->getHtml('Cancel', '0', '0'); ?>">
+                <input id="bAttributeCancel" type="submit" class="cancel-form hidden button close" value="<?= $this->getHtml('Cancel', '0', '0'); ?>">
             </div>
         </form>
     </section>
@@ -91,7 +95,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                     <td><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?><i class="sort-asc fa fa-chevron-up"></i><i class="sort-desc fa fa-chevron-down"></i>
             <tbody>
                 <template class="oms-add-tpl-attribute">
-                    <tr data-id="" draggable="false">
+                    <tr class="animated medium-duration greenCircleFade" data-id="" draggable="false">
                         <td>
                             <i class="fa fa-cogs btn update-form"></i>
                             <input id="attributeTable-remove-0" type="checkbox" class="hidden">

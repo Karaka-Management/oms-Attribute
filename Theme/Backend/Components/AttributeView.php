@@ -63,6 +63,14 @@ class AttributeView extends View
     public string $apiUri = '';
 
     /**
+     * Reference id
+     *
+     * @var string
+     * @since 1.0.0
+     */
+    public int $refId = 0;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct(L11nManager $l11n = null, RequestAbstract $request, ResponseAbstract $response)
@@ -81,6 +89,7 @@ class AttributeView extends View
         $this->attributeTypes = $data[1];
         $this->units          = $data[2];
         $this->apiUri         = $data[3];
+        $this->refId          = $data[4];
 
         return parent::render();
     }

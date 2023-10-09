@@ -37,29 +37,42 @@ trait ApiAttributeTraitController
      * Method to create item attribute from request.
      *
      * @param RequestAbstract $request Request
+     * @param AttributeType   $type    Attribute type
      *
      * @return Attribute
      *
      * @since 1.0.0
      */
-    private function createAttributeFromRequest(RequestAbstract $request) : Attribute
+    private function createAttributeFromRequest(RequestAbstract $request, AttributeType $type) : Attribute
     {
-        $attribute       = new Attribute();
-        $attribute->ref  = (int) $request->getData('ref');
-        $attribute->type = new NullAttributeType((int) $request->getData('type'));
+        $new       = new Attribute();
+        $new->ref  = (int) $request->getData('ref');
+        $new->type = $type;
 
-        if ($request->hasData('value')) {
-            $attribute->value = new NullAttributeValue((int) $request->getData('value'));
+        if ($new->type->custom) {
+            if ($request->hasData('value_id')) {
+                $new->value = new NullAttributeValue((int) $request->getData('value_id'));
+            } else {
+                // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
+                $new->value = new AttributeValue();
+                $new->value->setValue($request->getData('value'), $new->type->datatype);
+            }
         } else {
-            $newRequest = clone $request;
-            $newRequest->setData('value', $request->getData('custom'), true);
+            // @todo: fix by only accepting the value id to be used
+            // this is a workaround for now because the front end doesn't allow to dynamically show default values.
+            $value = new NullAttributeValue((int) $request->getData('value_id'));
 
-            $value = $this->createAttributeValueFromRequest($newRequest, $attribute->type);
+            // Couldn't find matching default value
+            /*
+            if ($value->id === 0) {
+                return $new;
+            }
+            */
 
-            $attribute->value = $value;
+            $new->value = $value;
         }
 
-        return $attribute;
+        return $new;
     }
 
     /**
@@ -75,7 +88,7 @@ trait ApiAttributeTraitController
     {
         $val = [];
         if (($val['type'] = !$request->hasData('type'))
-            || ($val['value'] = (!$request->hasData('value') && !$request->hasData('custom')))
+            || ($val['value'] = (!$request->hasData('value') && !$request->hasData('value_id')))
         ) {
             return $val;
         }
@@ -267,21 +280,24 @@ trait ApiAttributeTraitController
     public function updateAttributeFromRequest(RequestAbstract $request, Attribute $new) : Attribute
     {
         if ($new->type->custom) {
-            if ($request->hasData('value')) {
-                $new->value = new NullAttributeValue((int) $request->getData('value'));
+            if ($request->hasData('value_id')) {
+                $new->value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
                 // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
                 $new->value = new AttributeValue();
-                $new->value->setValue($request->getData('custom'), $new->type->datatype);
+                $new->value->setValue($request->getData('value'), $new->type->datatype);
             }
         } else {
-            // @todo: fix by only accepting the value id to be used
-            // this is a workaround for now because the front end doesn't allow to dynamically show default values.
-            $value = $new->type->getDefaultByValue($request->getData('value'));
+            if ($request->hasData('value_id')) {
+                // @todo: check if value_id part of default values
+                $value = new NullAttributeValue((int) $request->getData('value_id'));
+            } else {
+                $value = $new->type->getDefaultByValue($request->getData('value'));
 
-            // Couldn't find matching default value
-            if ($value->id === 0) {
-                return $new;
+                // Couldn't find matching default value
+                if ($value->id === 0) {
+                    return $new;
+                }
             }
 
             $new->value = $value;
@@ -303,7 +319,7 @@ trait ApiAttributeTraitController
     {
         $val = [];
         if (($val['id'] = !$request->hasData('id'))
-            || ($val['value'] = (!$request->hasData('value') && !$request->hasData('custom')))
+            || ($val['value'] = (!$request->hasData('value') && !$request->hasData('value_id')))
         ) {
             return $val;
         }
