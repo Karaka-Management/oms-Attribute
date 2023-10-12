@@ -204,6 +204,26 @@ class AttributeType implements \JsonSerializable
     }
 
     /**
+     * Check if an attribute type has a certain default id
+     *
+     * @param int $id Default object id
+     *
+     * @return bool
+     *
+     * @since 1.0.0
+     */
+    public function hasDefaultId(int $id) : bool
+    {
+        foreach ($this->defaults as $default) {
+            if ($default->id === $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function toArray() : array

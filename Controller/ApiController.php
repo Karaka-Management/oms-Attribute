@@ -89,13 +89,15 @@ final class ApiController extends Controller
             if ($request->hasData('value_id')) {
                 $new->value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
-                // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
                 $new->value = new AttributeValue();
                 $new->value->setValue($request->getData('value'), $new->type->datatype);
             }
         } else {
             if ($request->hasData('value_id')) {
-                // @todo: check if value_id part of default values
+                if (!$new->type->hasDefaultId((int) $request->getData('value_id'))) {
+                    return $new;
+                }
+
                 $value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
                 $value = $new->type->getDefaultByValue($request->getData('value'));

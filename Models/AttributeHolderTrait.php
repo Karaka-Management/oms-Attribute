@@ -79,6 +79,17 @@ trait AttributeHolderTrait
         return false;
     }
 
+    public function hasAttributeType(string $attrName) : bool
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->type->name === $attrName && !empty($attribute->value->getValue())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Get attribute
      *

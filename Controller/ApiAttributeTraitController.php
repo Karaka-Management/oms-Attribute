@@ -53,21 +53,24 @@ trait ApiAttributeTraitController
             if ($request->hasData('value_id')) {
                 $new->value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
-                // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
                 $new->value = new AttributeValue();
                 $new->value->setValue($request->getData('value'), $new->type->datatype);
             }
         } else {
-            // @todo: fix by only accepting the value id to be used
-            // this is a workaround for now because the front end doesn't allow to dynamically show default values.
-            $value = new NullAttributeValue((int) $request->getData('value_id'));
+            if ($request->hasData('value_id')) {
+                if (!$new->type->hasDefaultId((int) $request->getData('value_id'))) {
+                    return $new;
+                }
 
-            // Couldn't find matching default value
-            /*
-            if ($value->id === 0) {
-                return $new;
+                $value = new NullAttributeValue((int) $request->getData('value_id'));
+            } else {
+                $value = $new->type->getDefaultByValue($request->getData('value'));
+
+                // Couldn't find matching default value
+                if ($value->id === 0) {
+                    return $new;
+                }
             }
-            */
 
             $new->value = $value;
         }
@@ -283,13 +286,15 @@ trait ApiAttributeTraitController
             if ($request->hasData('value_id')) {
                 $new->value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
-                // @todo: consider to check if custom value already exist and just reference the id? Problematic if content of id gets changed.
                 $new->value = new AttributeValue();
                 $new->value->setValue($request->getData('value'), $new->type->datatype);
             }
         } else {
             if ($request->hasData('value_id')) {
-                // @todo: check if value_id part of default values
+                if (!$new->type->hasDefaultId((int) $request->getData('value_id'))) {
+                    return $new;
+                }
+
                 $value = new NullAttributeValue((int) $request->getData('value_id'));
             } else {
                 $value = $new->type->getDefaultByValue($request->getData('value'));
