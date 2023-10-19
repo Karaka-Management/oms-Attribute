@@ -79,7 +79,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
 
 <div class="col-xs-12 col-md-6">
     <section class="portlet">
-        <div class="portlet-head"><?= $this->getHtml('Attributes', 'Attribute', 'Backend'); ?><i class="lni lni-download download btn end-xs"></i></div>
+        <div class="portlet-head"><?= $this->getHtml('Attributes', 'Attribute', 'Backend'); ?><i class="g-icon download btn end-xs">download</i></div>
         <div class="slider">
         <table id="attributeTable" class="default"
             data-tag="form"
@@ -90,16 +90,16 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                 <tr>
                     <td>
                     <td><?= $this->getHtml('ID', '0', '0'); ?>
-                    <td><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc fa fa-chevron-up"></i><i class="sort-desc fa fa-chevron-down"></i>
-                    <td class="wf-100"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?><i class="sort-asc fa fa-chevron-up"></i><i class="sort-desc fa fa-chevron-down"></i>
-                    <td><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?><i class="sort-asc fa fa-chevron-up"></i><i class="sort-desc fa fa-chevron-down"></i>
+                    <td><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td class="wf-100"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
             <tbody>
                 <template class="oms-add-tpl-attribute">
                     <tr class="animated medium-duration greenCircleFade" data-id="" draggable="false">
                         <td>
-                            <i class="fa fa-cogs btn update-form"></i>
+                            <i class="g-icon btn update-form">settings</i>
                             <input id="attributeTable-remove-0" type="checkbox" class="hidden">
-                            <label for="attributeTable-remove-0" class="checked-visibility-alt"><i class="fa fa-times btn form-action"></i></label>
+                            <label for="attributeTable-remove-0" class="checked-visibility-alt"><i class="g-icon btn form-action">close</i></label>
                             <span class="checked-visibility">
                                 <label for="attributeTable-remove-0" class="link default"><?= $this->getHtml('Cancel', '0', '0'); ?></label>
                                 <label for="attributeTable-remove-0" class="remove-form link cancel"><?= $this->getHtml('Delete', '0', '0'); ?></label>
@@ -114,10 +114,10 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                 foreach ($attribute as $key => $value) : ++$c; ?>
                     <tr data-id="<?= $value->id; ?>">
                         <td>
-                            <i class="fa fa-cogs btn update-form"></i>
+                            <i class="g-icon btn update-form">settings</i>
                             <?php if (!$value->type->isRequired) : ?>
                             <input id="attributeTable-remove-<?= $value->id; ?>" type="checkbox" class="hidden">
-                            <label for="attributeTable-remove-<?= $value->id; ?>" class="checked-visibility-alt"><i class="fa fa-times btn form-action"></i></label>
+                            <label for="attributeTable-remove-<?= $value->id; ?>" class="checked-visibility-alt"><i class="g-icon btn form-action">close</i></label>
                             <span class="checked-visibility">
                                 <label for="attributeTable-remove-<?= $value->id; ?>" class="link default"><?= $this->getHtml('Cancel', '0', '0'); ?></label>
                                 <label for="attributeTable-remove-<?= $value->id; ?>" class="remove-form link cancel"><?= $this->getHtml('Delete', '0', '0'); ?></label>
