@@ -192,18 +192,6 @@ class AttributeType implements \JsonSerializable
     }
 
     /**
-     * Get default values
-     *
-     * @return array
-     *
-     * @sicne 1.0.0
-     */
-    public function getDefaults() : array
-    {
-        return $this->defaults;
-    }
-
-    /**
      * Check if an attribute type has a certain default id
      *
      * @param int $id Default object id
