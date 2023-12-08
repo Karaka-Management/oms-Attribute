@@ -50,7 +50,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
                     </select>
                 </div>
 
-                <!-- @todo: implement
+                <!-- @todo implement
                 <div class="form-group">
                     <label for="iAttributesUnit"><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?></label>
                     <select id="iAttributesUnit" name="unit" data-tpl-text="/unit" data-tpl-value="/unit">

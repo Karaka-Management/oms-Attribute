@@ -17,7 +17,6 @@ namespace Modules\Attribute\Controller;
 use Modules\Attribute\Models\Attribute;
 use Modules\Attribute\Models\AttributeType;
 use Modules\Attribute\Models\AttributeValue;
-use Modules\Attribute\Models\NullAttributeType;
 use Modules\Attribute\Models\NullAttributeValue;
 use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
@@ -359,7 +358,7 @@ trait ApiAttributeTraitController
      *
      * @return BaseStringL11n
      *
-     * @todo: consider to move all these FromRequest functions to the attribute module since they are the same in every module!
+     * @todo consider to move all these FromRequest functions to the attribute module since they are the same in every module!
      *
      * @since 1.0.0
      */
@@ -380,14 +379,15 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
-     *
      * @since 1.0.0
      */
     private function validateAttributeTypeL11nUpdate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['id'] = !$request->hasData('id'))) {
+        if (($val['id'] = !$request->hasData('id'))
+            || ($val['title'] = !$request->hasData('title'))
+            || ($val['language'] = $request->hasData('language') && !ISO639x1Enum::isValidValue($request->getDataString('language')))
+        ) {
             return $val;
         }
 
@@ -401,7 +401,7 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
+     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
@@ -423,7 +423,7 @@ trait ApiAttributeTraitController
      *
      * @return AttributeType
      *
-     * @todo: implement
+     * @todo Implement API update
      *
      * @since 1.0.0
      */
@@ -444,7 +444,7 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
+     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
@@ -485,7 +485,7 @@ trait ApiAttributeTraitController
      *
      * @return AttributeValue
      *
-     * @todo: implement
+     * @todo Implement API update
      *
      * @since 1.0.0
      */
@@ -504,7 +504,7 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
+     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
@@ -527,7 +527,7 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
+     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
@@ -549,7 +549,7 @@ trait ApiAttributeTraitController
      *
      * @return BaseStringL11n
      *
-     * @todo: implement
+     * @todo Implement API update
      *
      * @since 1.0.0
      */
@@ -570,14 +570,15 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
-     *
      * @since 1.0.0
      */
     private function validateAttributeValueL11nUpdate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['id'] = !$request->hasData('id'))) {
+        if (($val['id'] = !$request->hasData('id'))
+            || ($val['title'] = !$request->hasData('title'))
+            || ($val['language'] = $request->hasData('language') && !ISO639x1Enum::isValidValue($request->getDataString('language')))
+        ) {
             return $val;
         }
 
@@ -591,7 +592,7 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
+     * @todo Implement API validation function
      *
      * @since 1.0.0
      */

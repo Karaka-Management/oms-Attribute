@@ -16,6 +16,7 @@ namespace Modules\Attribute\Controller;
 
 use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\BaseStringL11nType;
+use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Localization\NullBaseStringL11nType;
 use phpOMS\Message\RequestAbstract;
 
@@ -81,7 +82,7 @@ trait ApiLocalizationTraitController
      *
      * @return BaseStringL11n
      *
-     * @todo: consider to move all these FromRequest functions to the attribute module since they are the same in every module!
+     * @todo consider to move all these FromRequest functions to the attribute module since they are the same in every module!
      *
      * @since 1.0.0
      */
@@ -102,14 +103,15 @@ trait ApiLocalizationTraitController
      *
      * @return array<string, bool>
      *
-     * @todo: implement
-     *
      * @since 1.0.0
      */
     private function validateL11nUpdate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['id'] = !$request->hasData('id'))) {
+        if (($val['id'] = !$request->hasData('id'))
+            || ($val['content'] = !$request->hasData('content'))
+            || ($val['language'] = $request->hasData('language') && !ISO639x1Enum::isValidValue($request->getDataString('language')))
+        ) {
             return $val;
         }
 
