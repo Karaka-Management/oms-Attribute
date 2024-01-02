@@ -79,6 +79,15 @@ trait AttributeHolderTrait
         return false;
     }
 
+    /**
+     * Check if a certain attribute type exists by name
+     *
+     * @param string $attrName Attribute name to check
+     *
+     * @return bool
+     *
+     * @since 1.0.0
+     */
     public function hasAttributeType(string $attrName) : bool
     {
         foreach ($this->attributes as $attribute) {

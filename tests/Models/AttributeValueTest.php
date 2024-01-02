@@ -16,7 +16,6 @@ namespace Modules\Admin\tests\Models;
 
 use Modules\Attribute\Models\AttributeValue;
 use Modules\Attribute\Models\AttributeValueType;
-use Modules\Attribute\Models\AttributeValueValue;
 
 /**
  * @testdox Modules\Admin\tests\Models\AttributeValueTest: Attribute model
@@ -54,7 +53,7 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         $value->setValue(false, AttributeValueType::_BOOL);
 
-        self::assertEquals(false, $value->getValue());
+        self::assertFalse($value->getValue());
     }
 
     public function testGetDefaultFloat() : void
@@ -78,11 +77,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         self::assertEquals(
             [
-                'id' => 0,
-                'name' => '',
+                'id'                => 0,
+                'name'              => '',
                 'validationPattern' => '',
-                'custom' => false,
-                'isRequired' => false,
+                'custom'            => false,
+                'isRequired'        => false,
             ],
             $value->toArray()
         );
@@ -93,11 +92,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         self::assertEquals(
             [
-                'id' => 0,
-                'name' => '',
+                'id'                => 0,
+                'name'              => '',
                 'validationPattern' => '',
-                'custom' => false,
-                'isRequired' => false,
+                'custom'            => false,
+                'isRequired'        => false,
             ],
             $value->jsonSerialize()
         );

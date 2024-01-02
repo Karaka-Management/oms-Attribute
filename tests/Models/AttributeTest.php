@@ -45,7 +45,7 @@ final class AttributeTest extends \PHPUnit\Framework\TestCase
 
         self::assertEquals(
             [
-                'id' => 0,
+                'id'  => 0,
                 'ref' => 0,
             ],
             $array
@@ -63,7 +63,7 @@ final class AttributeTest extends \PHPUnit\Framework\TestCase
 
         self::assertEquals(
             [
-                'id' => 0,
+                'id'  => 0,
                 'ref' => 0,
             ],
             $array

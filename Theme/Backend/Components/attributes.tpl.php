@@ -33,7 +33,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
             data-add-tpl="#attributeTable tbody .oms-add-tpl-attribute">
             <div class="portlet-head"><?= $this->getHtml('Attribute', 'Attribute', 'Backend'); ?></div>
             <div class="portlet-body">
-                <input type="hidden" id="iAttributeRef" name="ref" value="<?= $this->refId ?>" disabled>
+                <input type="hidden" id="iAttributeRef" name="ref" value="<?= $this->refId; ?>" disabled>
 
                 <div class="form-group">
                     <label for="iAttributeId"><?= $this->getHtml('ID', '0', '0'); ?></label>
@@ -81,7 +81,7 @@ $l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
     <section class="portlet">
         <div class="portlet-head"><?= $this->getHtml('Attributes', 'Attribute', 'Backend'); ?><i class="g-icon download btn end-xs">download</i></div>
         <div class="slider">
-        <table id="attributeTable" class="default"
+        <table id="attributeTable" class="default sticky"
             data-tag="form"
             data-ui-element="tr"
             data-add-tpl=".oms-add-tpl-attribute"

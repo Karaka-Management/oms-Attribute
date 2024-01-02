@@ -27,7 +27,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetDefaultString() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue('abc', AttributeValueType::_STRING);
 
@@ -36,7 +36,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDefaultInt() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1, AttributeValueType::_INT);
 
@@ -45,7 +45,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDefaultFloatInt() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1, AttributeValueType::_FLOAT_INT);
 
@@ -54,16 +54,16 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDefaultBool() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(false, AttributeValueType::_BOOL);
 
-        self::assertEquals(false, $type->getDefaultByValue(false)->getValue());
+        self::assertFalse($type->getDefaultByValue(false)->getValue());
     }
 
     public function testGetDefaultFloat() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1.23, AttributeValueType::_FLOAT);
 
@@ -72,7 +72,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDefaultDateTime() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue($val = new \DateTime('now'), AttributeValueType::_DATETIME);
 
@@ -81,7 +81,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testDefaultId() : void
     {
-        $type = new AttributeType();
+        $type             = new AttributeType();
         $type->defaults[] = new AttributeValue();
 
         self::assertTrue($type->hasDefaultId(0));
@@ -94,11 +94,11 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
         self::assertEquals(
             [
-                'id' => 0,
-                'name' => '',
+                'id'                => 0,
+                'name'              => '',
                 'validationPattern' => '',
-                'custom' => false,
-                'isRequired' => false,
+                'custom'            => false,
+                'isRequired'        => false,
             ],
             $type->toArray()
         );
@@ -110,11 +110,11 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
         self::assertEquals(
             [
-                'id' => 0,
-                'name' => '',
+                'id'                => 0,
+                'name'              => '',
                 'validationPattern' => '',
-                'custom' => false,
-                'isRequired' => false,
+                'custom'            => false,
+                'isRequired'        => false,
             ],
             $type->jsonSerialize()
         );
