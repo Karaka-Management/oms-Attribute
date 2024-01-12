@@ -63,6 +63,8 @@ class AttributeType implements \JsonSerializable
 
     public bool $isRequired = false;
 
+    public bool $repeatable = false;
+
     /**
      * Datatype of the attribute
      *

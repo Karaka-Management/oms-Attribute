@@ -13,16 +13,12 @@
 declare(strict_types=1);
 
 use phpOMS\Localization\ISO639Enum;
-use phpOMS\Localization\NullLocalization;
 use phpOMS\Uri\UriFactory;
 
 $attribute = $this->attributes;
 $languages = ISO639Enum::getConstants();
 $types     = $this->attributeTypes;
 $units     = $this->units;
-
-/** @var \phpOMS\Localization\Localization $l11n */
-$l11n = $this->data['defaultlocalization'] ?? new NullLocalization();
 ?>
 
 <div class="col-xs-12 col-md-6">
