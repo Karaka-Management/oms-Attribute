@@ -22,6 +22,7 @@ use Modules\Attribute\Models\AttributeTypeMapper;
 use Modules\Attribute\Models\AttributeValue;
 use Modules\Attribute\Models\AttributeValueL11nMapper;
 use Modules\Attribute\Models\AttributeValueMapper;
+use Modules\Attribute\Models\AttributeValueType;
 use Modules\Attribute\Models\NullAttributeType;
 use Modules\Attribute\Models\NullAttributeValue;
 use phpOMS\Localization\BaseStringL11n;
@@ -174,12 +175,10 @@ final class ApiController extends Controller
      */
     private function createAttributeTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $attrL11n      = new BaseStringL11n();
-        $attrL11n->ref = $request->getDataInt('type') ?? 0;
-        $attrL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $attrL11n->content = $request->getDataString('title') ?? '';
+        $attrL11n           = new BaseStringL11n();
+        $attrL11n->ref      = $request->getDataInt('type') ?? 0;
+        $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $attrL11n->content  = $request->getDataString('title') ?? '';
 
         return $attrL11n;
     }
@@ -244,11 +243,14 @@ final class ApiController extends Controller
     private function createAttributeTypeFromRequest(RequestAbstract $request) : AttributeType
     {
         $attrType                    = new AttributeType($request->getDataString('name') ?? '');
-        $attrType->datatype          = $request->getDataInt('datatype') ?? 0;
+        $attrType->datatype          = AttributeValueType::tryFromValue($request->getDataInt('datatype')) ?? AttributeValueType::_STRING;
         $attrType->custom            = $request->getDataBool('custom') ?? false;
         $attrType->isRequired        = $request->getDataBool('is_required') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';
-        $attrType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+        $attrType->setL11n(
+            $request->getDataString('title') ?? '',
+            ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
+        );
         $attrType->setFields($request->getDataInt('fields') ?? 0);
 
         return $attrType;
@@ -333,7 +335,10 @@ final class ApiController extends Controller
         $attrValue->setValue($request->getData('value'), $type->datatype);
 
         if ($request->hasData('title')) {
-            $attrValue->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+            $attrValue->setL11n(
+                $request->getDataString('title') ?? '',
+                ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
+            );
         }
 
         return $attrValue;
@@ -398,12 +403,10 @@ final class ApiController extends Controller
      */
     private function createAttributeValueL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $attrL11n      = new BaseStringL11n();
-        $attrL11n->ref = $request->getDataInt('value') ?? 0;
-        $attrL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $attrL11n->content = $request->getDataString('title') ?? '';
+        $attrL11n           = new BaseStringL11n();
+        $attrL11n->ref      = $request->getDataInt('value') ?? 0;
+        $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $attrL11n->content  = $request->getDataString('title') ?? '';
 
         return $attrL11n;
     }

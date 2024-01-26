@@ -17,6 +17,7 @@ namespace Modules\Attribute\Controller;
 use Modules\Attribute\Models\Attribute;
 use Modules\Attribute\Models\AttributeType;
 use Modules\Attribute\Models\AttributeValue;
+use Modules\Attribute\Models\AttributeValueType;
 use Modules\Attribute\Models\NullAttributeValue;
 use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
@@ -109,12 +110,10 @@ trait ApiAttributeTraitController
      */
     private function createAttributeTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $attrL11n      = new BaseStringL11n();
-        $attrL11n->ref = $request->getDataInt('type') ?? 0;
-        $attrL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $attrL11n->content = $request->getDataString('title') ?? '';
+        $attrL11n           = new BaseStringL11n();
+        $attrL11n->ref      = $request->getDataInt('type') ?? 0;
+        $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $attrL11n->content  = $request->getDataString('title') ?? '';
 
         return $attrL11n;
     }
@@ -152,12 +151,16 @@ trait ApiAttributeTraitController
     private function createAttributeTypeFromRequest(RequestAbstract $request) : AttributeType
     {
         $attrType                    = new AttributeType($request->getDataString('name') ?? '');
-        $attrType->datatype          = $request->getDataInt('datatype') ?? 0;
+        $attrType->datatype          = AttributeValueType::tryFromValue($request->getDataInt('datatype')) ?? AttributeValueType::_STRING;
         $attrType->custom            = $request->getDataBool('custom') ?? false;
         $attrType->repeatable        = $request->getDataBool('repeatable') ?? false;
+        $attrType->isInternal        = $request->getDataBool('internal') ?? false;
         $attrType->isRequired        = $request->getDataBool('is_required') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';
-        $attrType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+        $attrType->setL11n(
+            $request->getDataString('title') ?? '',
+            ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
+        );
         $attrType->setFields($request->getDataInt('fields') ?? 0);
 
         return $attrType;
@@ -201,7 +204,10 @@ trait ApiAttributeTraitController
         $attrValue->setValue($request->getDataString('value'), $type->datatype);
 
         if ($request->hasData('title')) {
-            $attrValue->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+            $attrValue->setL11n(
+                $request->getDataString('title') ?? '',
+                ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
+            );
         }
 
         return $attrValue;
@@ -239,12 +245,10 @@ trait ApiAttributeTraitController
      */
     private function createAttributeValueL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $attrL11n      = new BaseStringL11n();
-        $attrL11n->ref = $request->getDataInt('value') ?? 0;
-        $attrL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $attrL11n->content = $request->getDataString('title') ?? '';
+        $attrL11n           = new BaseStringL11n();
+        $attrL11n->ref      = $request->getDataInt('value') ?? 0;
+        $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $attrL11n->content  = $request->getDataString('title') ?? '';
 
         return $attrL11n;
     }
@@ -365,10 +369,8 @@ trait ApiAttributeTraitController
      */
     public function updateAttributeTypeL11nFromRequest(RequestAbstract $request, BaseStringL11n $new) : BaseStringL11n
     {
-        $new->setLanguage(
-            $request->getDataString('language') ?? $new->language
-        );
-        $new->content = $request->getDataString('title') ?? $new->content;
+        $new->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $new->language;
+        $new->content  = $request->getDataString('title') ?? $new->content;
 
         return $new;
     }
@@ -430,7 +432,7 @@ trait ApiAttributeTraitController
      */
     public function updateAttributeTypeFromRequest(RequestAbstract $request, AttributeType $new) : AttributeType
     {
-        $new->datatype          = $request->getDataInt('datatype') ?? $new->datatype;
+        $new->datatype          = AttributeValueType::tryFromValue($request->getDataInt('datatype')) ?? $new->datatype;
         $new->custom            = $request->getDataBool('custom') ?? $new->custom;
         $new->isRequired        = $request->getDataBool('is_required') ?? $new->isRequired;
         $new->validationPattern = $request->getDataString('validation_pattern') ?? $new->validationPattern;
@@ -556,10 +558,8 @@ trait ApiAttributeTraitController
      */
     public function updateAttributeValueL11nFromRequest(RequestAbstract $request, BaseStringL11n $new) : BaseStringL11n
     {
-        $new->setLanguage(
-            $request->getDataString('language') ?? $new->language
-        );
-        $new->content = $request->getDataString('title') ?? $new->content;
+        $new->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $new->language;
+        $new->content  = $request->getDataString('title') ?? $new->content;
 
         return $new;
     }

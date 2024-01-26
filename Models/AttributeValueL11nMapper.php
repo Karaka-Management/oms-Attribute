@@ -18,7 +18,7 @@ use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 use phpOMS\Localization\BaseStringL11n;
 
 /**
- *  mapper class.
+ * Attribute value l11n mapper class.
  *
  * @package Modules\Attribute\Models
  * @license OMS License 2.0
@@ -37,10 +37,10 @@ final class AttributeValueL11nMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'attribute_attr_value_l11n_id'     => ['name' => 'attribute_attr_value_l11n_id',    'type' => 'int',    'internal' => 'id'],
-        'attribute_attr_value_l11n_title'  => ['name' => 'attribute_attr_value_l11n_title', 'type' => 'string', 'internal' => 'content', 'autocomplete' => true],
-        'attribute_attr_value_l11n_value'  => ['name' => 'attribute_attr_value_l11n_value',  'type' => 'int',    'internal' => 'ref'],
-        'attribute_attr_value_l11n_lang'   => ['name' => 'attribute_attr_value_l11n_lang',  'type' => 'string', 'internal' => 'language'],
+        'attribute_attr_value_l11n_id'    => ['name' => 'attribute_attr_value_l11n_id',    'type' => 'int',    'internal' => 'id'],
+        'attribute_attr_value_l11n_title' => ['name' => 'attribute_attr_value_l11n_title', 'type' => 'string', 'internal' => 'content', 'autocomplete' => true],
+        'attribute_attr_value_l11n_value' => ['name' => 'attribute_attr_value_l11n_value',  'type' => 'int',    'internal' => 'ref'],
+        'attribute_attr_value_l11n_lang'  => ['name' => 'attribute_attr_value_l11n_lang',  'type' => 'string', 'internal' => 'language'],
     ];
 
     /**

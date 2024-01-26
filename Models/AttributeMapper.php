@@ -17,7 +17,7 @@ namespace Modules\Attribute\Models;
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
- *  mapper class.
+ * Attribute mapper class.
  *
  * @package Modules\Attribute\Models
  * @license OMS License 2.0

@@ -65,6 +65,8 @@ class AttributeType implements \JsonSerializable
 
     public bool $repeatable = false;
 
+    public bool $isInternal = false;
+
     /**
      * Datatype of the attribute
      *
@@ -156,12 +158,12 @@ class AttributeType implements \JsonSerializable
         if ($l11n instanceof BaseStringL11n) {
             $this->l11n = $l11n;
         } elseif (isset($this->l11n) && $this->l11n instanceof BaseStringL11n) {
-            $this->l11n->content = $l11n;
-            $this->l11n->setLanguage($lang);
+            $this->l11n->content  = $l11n;
+            $this->l11n->language = $lang;
         } else {
-            $this->l11n          = new BaseStringL11n();
-            $this->l11n->content = $l11n;
-            $this->l11n->setLanguage($lang);
+            $this->l11n           = new BaseStringL11n();
+            $this->l11n->content  = $l11n;
+            $this->l11n->language = $lang;
         }
     }
 
@@ -224,6 +226,8 @@ class AttributeType implements \JsonSerializable
             'validationPattern' => $this->validationPattern,
             'custom'            => $this->custom,
             'isRequired'        => $this->isRequired,
+            'isInternal'        => $this->isInternal,
+            'repeatable'        => $this->repeatable,
         ];
     }
 

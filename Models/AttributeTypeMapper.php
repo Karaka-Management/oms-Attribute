@@ -17,7 +17,7 @@ namespace Modules\Attribute\Models;
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
- *  mapper class.
+ * Attribute type mapper class.
  *
  * @package Modules\Attribute\Models
  * @license OMS License 2.0
@@ -36,13 +36,13 @@ final class AttributeTypeMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'attribute_attr_type_id'         => ['name' => 'attribute_attr_type_id',       'type' => 'int',    'internal' => 'id'],
-        'attribute_attr_type_name'       => ['name' => 'attribute_attr_type_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
-        'attribute_attr_type_datatype'   => ['name' => 'attribute_attr_type_datatype',   'type' => 'int',    'internal' => 'datatype'],
-        'attribute_attr_type_fields'     => ['name' => 'attribute_attr_type_fields',   'type' => 'int',    'internal' => 'fields'],
-        'attribute_attr_type_custom'     => ['name' => 'attribute_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
-        'attribute_attr_type_pattern'    => ['name' => 'attribute_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
-        'attribute_attr_type_required'   => ['name' => 'attribute_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
+        'attribute_attr_type_id'       => ['name' => 'attribute_attr_type_id',       'type' => 'int',    'internal' => 'id'],
+        'attribute_attr_type_name'     => ['name' => 'attribute_attr_type_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
+        'attribute_attr_type_datatype' => ['name' => 'attribute_attr_type_datatype',   'type' => 'int',    'internal' => 'datatype'],
+        'attribute_attr_type_fields'   => ['name' => 'attribute_attr_type_fields',   'type' => 'int',    'internal' => 'fields'],
+        'attribute_attr_type_custom'   => ['name' => 'attribute_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
+        'attribute_attr_type_pattern'  => ['name' => 'attribute_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
+        'attribute_attr_type_required' => ['name' => 'attribute_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
     ];
 
     /**

@@ -86,8 +86,9 @@ $units     = $this->units;
                 <tr>
                     <td>
                     <td><?= $this->getHtml('ID', '0', '0'); ?>
-                    <td><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td><?= $this->getHtml('Type', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
                     <td class="wf-100"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
                     <td><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
             <tbody>
                 <template class="oms-add-tpl-attribute">
@@ -103,7 +104,8 @@ $units     = $this->units;
                         <td data-tpl-text="/id" data-tpl-value="/id"></td>
                         <td data-tpl-text="/type" data-tpl-value="/type" data-value=""></td>
                         <td data-tpl-text="/value" data-tpl-value="/value"></td>
-                        <td data-tpl-text="/unit" data-tpl-value="/unit"></td>
+                        <td data-tpl-text="/name" data-tpl-value="/name"></td>
+                        <td data-tpl-text="/unit" data-tpl-value="/unit" data-value=""></td>
                     </tr>
                 </template>
                 <?php $c = 0;
@@ -122,6 +124,7 @@ $units     = $this->units;
                         <td data-tpl-text="/id" data-tpl-value="/id"><?= $value->id; ?>
                         <td data-tpl-text="/type" data-tpl-value="/type" data-value="<?= $value->type->id; ?>"><?= $this->printHtml($value->type->getL11n()); ?>
                         <td data-tpl-text="/value" data-tpl-value="/value"><?= $value->value->getValue() instanceof \DateTime ? $value->value->getValue()->format('Y-m-d') : $this->printHtml((string) $value->value->getValue()); ?>
+                        <td data-tpl-text="/name" data-tpl-value="/name"><?= $this->printHtml((string) $value->value->getL11n()); ?>
                         <td data-tpl-text="/unit" data-tpl-value="/unit" data-value="<?= $value->value->unit; ?>"><?= $this->printHtml($value->value->unit); ?>
                 <?php endforeach; ?>
                 <?php if ($c === 0) : ?>

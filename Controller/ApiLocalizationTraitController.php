@@ -41,13 +41,11 @@ trait ApiLocalizationTraitController
      */
     private function createL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $l11n       = new BaseStringL11n();
-        $l11n->ref  = $request->getDataInt('ref') ?? 0;
-        $l11n->type = new NullBaseStringL11nType($request->getDataInt('type') ?? 0);
-        $l11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $l11n->content = $request->getDataString('content') ?? '';
+        $l11n           = new BaseStringL11n();
+        $l11n->ref      = $request->getDataInt('ref') ?? 0;
+        $l11n->type     = new NullBaseStringL11nType($request->getDataInt('type') ?? 0);
+        $l11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $l11n->content  = $request->getDataString('content') ?? '';
 
         return $l11n;
     }
@@ -88,10 +86,8 @@ trait ApiLocalizationTraitController
      */
     public function updateL11nFromRequest(RequestAbstract $request, BaseStringL11n $new) : BaseStringL11n
     {
-        $new->setLanguage(
-            $request->getDataString('language') ?? $new->language
-        );
-        $new->content = $request->getDataString('content') ?? $new->content;
+        $new->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $new->language;
+        $new->content  = $request->getDataString('content') ?? $new->content;
 
         return $new;
     }
