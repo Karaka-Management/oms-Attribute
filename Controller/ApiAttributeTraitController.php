@@ -404,8 +404,6 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo Implement API validation function
-     *
      * @since 1.0.0
      */
     private function validateAttributeTypeL11nDelete(RequestAbstract $request) : array
@@ -530,8 +528,6 @@ trait ApiAttributeTraitController
      *
      * @return array<string, bool>
      *
-     * @todo Implement API validation function
-     *
      * @since 1.0.0
      */
     private function validateAttributeValueDelete(RequestAbstract $request) : array
@@ -592,8 +588,6 @@ trait ApiAttributeTraitController
      * @param RequestAbstract $request Request
      *
      * @return array<string, bool>
-     *
-     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
