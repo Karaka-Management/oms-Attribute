@@ -65,7 +65,7 @@ class AttributeView extends View
     /**
      * Reference id
      *
-     * @var string
+     * @var int
      * @since 1.0.0
      */
     public int $refId = 0;

@@ -89,6 +89,9 @@ class AttributeType implements \JsonSerializable
      */
     public array $defaults = [];
 
+    // @todo Allow to reference enum instead of default values
+    //      Currently we create language and country values which is insane
+
     /**
      * Default attribute value
      *
