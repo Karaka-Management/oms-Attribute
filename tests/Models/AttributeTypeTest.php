@@ -99,6 +99,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
                 'validationPattern' => '',
                 'custom'            => false,
                 'isRequired'        => false,
+                'isInternal'        => false,
+                'repeatable'        => false,
             ],
             $type->toArray()
         );
@@ -115,6 +117,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
                 'validationPattern' => '',
                 'custom'            => false,
                 'isRequired'        => false,
+                'isInternal'        => false,
+                'repeatable'        => false,
             ],
             $type->jsonSerialize()
         );

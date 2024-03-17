@@ -78,10 +78,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             [
                 'id'                => 0,
-                'name'              => '',
-                'validationPattern' => '',
-                'custom'            => false,
-                'isRequired'        => false,
+                'valueInt' => null,
+                'valueStr' => null,
+                'valueDec' => null,
+                'valueDat' => null,
+                'isDefault' => false,
             ],
             $value->toArray()
         );
@@ -93,10 +94,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             [
                 'id'                => 0,
-                'name'              => '',
-                'validationPattern' => '',
-                'custom'            => false,
-                'isRequired'        => false,
+                'valueInt' => null,
+                'valueStr' => null,
+                'valueDec' => null,
+                'valueDat' => null,
+                'isDefault' => false,
             ],
             $value->jsonSerialize()
         );

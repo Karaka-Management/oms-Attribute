@@ -36,8 +36,6 @@ final class AttributeHolderTraitTestTest extends \PHPUnit\Framework\TestCase
     protected function setUp() : void
     {
         $this->holder = new class() {
-            public $attributes = [];
-
             use AttributeHolderTrait;
         };
 
