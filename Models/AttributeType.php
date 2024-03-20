@@ -134,7 +134,9 @@ class AttributeType implements \JsonSerializable
         } elseif ($this->datatype === AttributeValueType::_FLOAT) {
             $mValue = (float) $value;
         } elseif ($this->datatype === AttributeValueType::_DATETIME) {
-            $mValue = new \DateTime((string) $value);
+            $mValue = $value instanceof \DateTime
+                ? $value
+                : new \DateTime((string) $value);
         }
 
         foreach ($this->defaults as $default) {

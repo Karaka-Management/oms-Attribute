@@ -22,7 +22,7 @@ use Modules\Attribute\Models\NullAttributeType;
 final class NullAttributeTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @covers Modules\Attribute\Models\NullAttributeType
+     * @covers \Modules\Attribute\Models\NullAttributeType
      * @group module
      */
     public function testNull() : void
@@ -31,7 +31,7 @@ final class NullAttributeTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Attribute\Models\NullAttributeType
+     * @covers \Modules\Attribute\Models\NullAttributeType
      * @group module
      */
     public function testId() : void
@@ -41,7 +41,7 @@ final class NullAttributeTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Attribute\Models\NullAttributeType
+     * @covers \Modules\Attribute\Models\NullAttributeType
      * @group module
      */
     public function testJsonSerialize() : void
