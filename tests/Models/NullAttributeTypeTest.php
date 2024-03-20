@@ -19,31 +19,23 @@ use Modules\Attribute\Models\NullAttributeType;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Attribute\Models\NullAttributeType::class)]
 final class NullAttributeTypeTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @covers \Modules\Attribute\Models\NullAttributeType
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNull() : void
     {
         self::assertInstanceOf('\Modules\Attribute\Models\AttributeType', new NullAttributeType());
     }
 
-    /**
-     * @covers \Modules\Attribute\Models\NullAttributeType
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testId() : void
     {
         $null = new NullAttributeType(2);
         self::assertEquals(2, $null->id);
     }
 
-    /**
-     * @covers \Modules\Attribute\Models\NullAttributeType
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testJsonSerialize() : void
     {
         $null = new NullAttributeType(2);

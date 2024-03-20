@@ -19,10 +19,9 @@ use Modules\Attribute\Models\AttributeValue;
 use Modules\Attribute\Models\AttributeValueType;
 
 /**
- * @testdox Modules\Admin\tests\Models\AttributeTypeTest: Attribute model
- *
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\TestDox('Modules\Admin\tests\Models\AttributeTypeTest: Attribute model')]
 final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetDefaultString() : void

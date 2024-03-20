@@ -22,11 +22,10 @@ use Modules\Attribute\Models\AttributeValueType;
 use Modules\Attribute\Models\NullAttribute;
 
 /**
- * @testdox Modules\Admin\tests\Models\AttributeTest: Attribute model
- *
  * @internal
  */
-final class AttributeHolderTraitTestTest extends \PHPUnit\Framework\TestCase
+#[\PHPUnit\Framework\Attributes\TestDox('Modules\Admin\tests\Models\AttributeTest: Attribute model')]
+final class AttributeHolderTraitTest extends \PHPUnit\Framework\TestCase
 {
     private $holder = null;
 

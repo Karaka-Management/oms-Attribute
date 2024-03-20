@@ -17,10 +17,9 @@ namespace Modules\Admin\tests\Models;
 use Modules\Attribute\Models\Attribute;
 
 /**
- * @testdox Modules\Admin\tests\Models\AttributeTest: Attribute model
- *
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\TestDox('Modules\Admin\tests\Models\AttributeTest: Attribute model')]
 final class AttributeTest extends \PHPUnit\Framework\TestCase
 {
     public function testDeepClone() : void
