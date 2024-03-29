@@ -59,6 +59,7 @@ $units     = $this->units;
                 </div>
                 -->
 
+                <!-- @todo If only default values are allowed -> only show drop down with values -->
                 <div class="form-group">
                     <label for="iAttributeValue"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?></label>
                     <pre class="textarea contenteditable" id="iAttributeValue" data-name="value" data-tpl-value="/value" contenteditable></pre>

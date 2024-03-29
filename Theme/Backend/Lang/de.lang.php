@@ -27,4 +27,11 @@ return ['Attribute' => [
     'Type'           => 'Type',
     'Unit'           => 'Unit',
     'Value'          => 'Value',
+    '_INT'          => 'INTEGER',
+    '_STRING'          => 'STRING',
+    '_FLOAT'          => 'FLOAT',
+    '_FLOAT_INT'          => 'FLOAT_INT',
+    '_DATETIME'          => 'DATETIME',
+    '_BOOL'          => 'BOOL',
+    'Defaults'          => 'Standards',
 ]];
