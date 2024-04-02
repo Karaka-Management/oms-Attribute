@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\Attribute\Theme\Backend\Components;
 
+use Modules\Attribute\Models\AttributeType;
 use Modules\Attribute\Models\AttributeValue;
 use phpOMS\Localization\L11nManager;
 use phpOMS\Message\RequestAbstract;
@@ -32,6 +33,14 @@ use Web\Backend\Views\L11nView;
  */
 class AttributeValueView extends View
 {
+    /**
+     * Attributes
+     *
+     * @var \Modules\Attribute\Models\AttributeType
+     * @since 1.0.0
+     */
+    public AttributeType $type;
+
     /**
      * Attributes
      *

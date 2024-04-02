@@ -76,11 +76,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         self::assertEquals(
             [
-                'id'                => 0,
-                'valueInt' => null,
-                'valueStr' => null,
-                'valueDec' => null,
-                'valueDat' => null,
+                'id'        => 0,
+                'valueInt'  => null,
+                'valueStr'  => null,
+                'valueDec'  => null,
+                'valueDat'  => null,
                 'isDefault' => false,
             ],
             $value->toArray()
@@ -92,11 +92,11 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         self::assertEquals(
             [
-                'id'                => 0,
-                'valueInt' => null,
-                'valueStr' => null,
-                'valueDec' => null,
-                'valueDat' => null,
+                'id'        => 0,
+                'valueInt'  => null,
+                'valueStr'  => null,
+                'valueDec'  => null,
+                'valueDat'  => null,
                 'isDefault' => false,
             ],
             $value->jsonSerialize()

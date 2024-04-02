@@ -18,19 +18,21 @@ use phpOMS\Uri\UriFactory;
 $types = AttributeValueType::getConstants();
 
 $isNew = $this->attribute->id === 0;
-$path = $this->path;
+$path  = $this->path;
 
 echo $this->data['nav']->render(); ?>
 
 <div class="tabview tab-2">
+    <?php if (!$isNew) : ?>
     <div class="box">
         <ul class="tab-links">
             <li><label for="c-tab-1"><?= $this->getHtml('Type', 'Attribute', 'Backend'); ?></label>
             <li><label for="c-tab-2"><?= $this->getHtml('Defaults', 'Attribute', 'Backend'); ?></label>
         </ul>
     </div>
+    <?php endif; ?>
     <div class="tab-content">
-        <input type="radio" id="c-tab-1" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
+        <input type="radio" id="c-tab-1" name="tabular-2"<?= $isNew || $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
         <div class="tab">
             <div class="row">
                 <div class="col-md-6 col-xs-12">
@@ -45,12 +47,12 @@ echo $this->data['nav']->render(); ?>
 
                             <div class="form-group">
                                 <label for="iName"><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?></label>
-                                <input id="iNAme" type="text" value="<?= $this->printHtml($this->attribute->name); ?>" disabled>
+                                <input id="iNAme" type="text" value="<?= $this->printHtml($this->attribute->name); ?>"<?= $isNew ? ' required' : ' disabled'; ?>>
                             </div>
 
                             <div class="form-group">
                                 <label for="iType"><?= $this->getHtml('Datatype', 'Attribute', 'Backend'); ?></label>
-                                <select id="iType" name="type" disabled>
+                                <select id="iType" name="type"<?= $isNew ? '' : ' disabled'; ?>>
                                     <?php foreach ($types as $key => $type) : ?>
                                         <option value="<?= $type; ?>"<?= $type === $this->attribute->datatype ? ' selected' : ''; ?>><?= $this->getHtml($key, 'Attribute', 'Backend'); ?>
                                     <?php endforeach; ?>
@@ -90,6 +92,7 @@ echo $this->data['nav']->render(); ?>
                 </div>
             </div>
 
+            <?php if (!$isNew) : ?>
             <div class="row">
                 <?= $this->l11nView->render(
                     $this->l11ns,
@@ -98,14 +101,20 @@ echo $this->data['nav']->render(); ?>
                 );
                 ?>
             </div>
+            <?php endif; ?>
         </div>
 
+        <?php if (!$isNew) : ?>
         <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab">
             <div class="row">
                 <div class="col-xs-12">
                     <section class="portlet">
-                        <div class="portlet-head"><?= $this->getHtml('Defaults'); ?><i class="g-icon download btn end-xs">download</i></div>
+                        <div class="portlet-head">
+                            <?= $this->getHtml('Defaults'); ?>
+                            <i class="g-icon download btn end-xs">download</i>
+                            <a class="button end-xs save" href="<?= UriFactory::build('{/base}/' . $path . '/attribute/value/create?type=' . $this->attribute->id); ?>"><?= $this->getHtml('New', '0', '0'); ?></a>
+                        </div>
                         <div class="slider">
                         <table id="iAttributeValueList" class="default sticky">
                             <thead>
@@ -166,5 +175,6 @@ echo $this->data['nav']->render(); ?>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </div>

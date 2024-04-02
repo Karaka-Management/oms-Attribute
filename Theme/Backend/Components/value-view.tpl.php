@@ -32,20 +32,25 @@ echo $this->data['nav']->render(); ?>
                 </div>
 
                 <div class="form-group">
-                    <label for="iName"><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?></label>
-                    <input id="iName" type="text" value="<?= $this->printHtml($this->attribute->getL11n()); ?>" disabled>
+                    <label for="iLocalization"><?= $this->getHtml('Localization', 'Attribute', 'Backend'); ?></label>
+                    <input id="iLocalization" type="text" name="content" value="<?= $this->printHtml($this->attribute->getL11n()); ?>"<?= $isNew ? '' : ' disabled'; ?>>
                 </div>
 
                 <div class="form-group">
                     <label for="iValue"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?></label>
-                    <?php if ($this->attribute->valueInt !== null) : ?>
+                    <?php if ($this->type->datatype === AttributeValueType::_INT || $this->type->datatype === AttributeValueType::_FLOAT_INT) : ?>
                         <input id="iValue" type="number" name="value" value="<?= $this->attribute->valueInt; ?>">
-                    <?php elseif ($this->attribute->valueDec !== null) : ?>
+                    <?php elseif ($this->type->datatype === AttributeValueType::_FLOAT) : ?>
                         <input id="iValue" type="number" name="value" step="any" value="<?= $this->attribute->valueDec; ?>">
-                    <?php elseif ($this->attribute->valueStr !== null) : ?>
+                    <?php elseif ($this->type->datatype === AttributeValueType::_STRING) : ?>
                         <input id="iValue" type="text" name="value" value="<?= $this->printHtml($this->attribute->valueStr); ?>">
-                    <?php elseif ($this->attribute->valueDat !== null) : ?>
+                    <?php elseif ($this->type->datatype === AttributeValueType::_DATETIME) : ?>
                         <input id="iValue" type="text" name="value" value="<?= $this->attribute->valueDat->format('Y-m-d\TH:i'); ?>">
+                    <?php elseif ($this->type->datatype === AttributeValueType::_BOOL) : ?>
+                        <label class="checkbox" for="iValue">
+                            <input type="checkbox" id="iValue" name="value" value="1"<?= $this->attribute->valueInt > 0 ? ' checked' : ''; ?>>
+                            <span class="checkmark"></span>
+                        </label>
                     <?php endif; ?>
                 </div>
             </div>
@@ -61,6 +66,7 @@ echo $this->data['nav']->render(); ?>
     </div>
 </div>
 
+<?php if (!$isNew) : ?>
 <div class="row">
     <?= $this->l11nView->render(
         $this->l11ns,
@@ -69,3 +75,4 @@ echo $this->data['nav']->render(); ?>
     );
     ?>
 </div>
+<?php endif; ?>

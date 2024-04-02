@@ -14,12 +14,10 @@ declare(strict_types=1);
 
 namespace Modules\Attribute\Theme\Backend\Components;
 
-use Modules\Attribute\Models\AttributeType;
 use phpOMS\Localization\L11nManager;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Views\View;
-use Web\Backend\Views\L11nView;
 
 /**
  * Component view.
