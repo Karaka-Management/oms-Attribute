@@ -88,8 +88,8 @@ $units     = $this->units;
                     <td>
                     <td><?= $this->getHtml('ID', '0', '0'); ?>
                     <td><?= $this->getHtml('Type', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
-                    <td class="wf-100"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
-                    <td><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
+                    <td class="wf-100"><?= $this->getHtml('Name', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
                     <td><?= $this->getHtml('Unit', 'Attribute', 'Backend'); ?><i class="sort-asc g-icon">expand_less</i><i class="sort-desc g-icon">expand_more</i>
             <tbody>
                 <template class="oms-add-tpl-attribute">

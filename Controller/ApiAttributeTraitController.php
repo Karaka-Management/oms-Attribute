@@ -34,7 +34,7 @@ use phpOMS\Message\RequestAbstract;
 trait ApiAttributeTraitController
 {
     /**
-     * Method to create item attribute from request.
+     * Method to create Attribute from request.
      *
      * @param RequestAbstract $request Request
      * @param AttributeType   $type    Attribute type
