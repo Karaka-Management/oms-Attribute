@@ -36,10 +36,10 @@ class AttributeValueView extends View
     /**
      * Attributes
      *
-     * @var \Modules\Attribute\Models\AttributeType
+     * @var null|\Modules\Attribute\Models\AttributeType
      * @since 1.0.0
      */
-    public AttributeType $type;
+    public ?AttributeType $type = null;
 
     /**
      * Attributes

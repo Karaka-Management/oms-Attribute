@@ -38,19 +38,21 @@ echo $this->data['nav']->render(); ?>
 
                 <div class="form-group">
                     <label for="iValue"><?= $this->getHtml('Value', 'Attribute', 'Backend'); ?></label>
-                    <?php if ($this->type->datatype === AttributeValueType::_INT || $this->type->datatype === AttributeValueType::_FLOAT_INT) : ?>
+                    <?php if ($this->type?->datatype === AttributeValueType::_INT || $this->type?->datatype === AttributeValueType::_FLOAT_INT) : ?>
                         <input id="iValue" type="number" name="value" value="<?= $this->attribute->valueInt; ?>">
-                    <?php elseif ($this->type->datatype === AttributeValueType::_FLOAT) : ?>
+                    <?php elseif ($this->type?->datatype === AttributeValueType::_FLOAT) : ?>
                         <input id="iValue" type="number" name="value" step="any" value="<?= $this->attribute->valueDec; ?>">
-                    <?php elseif ($this->type->datatype === AttributeValueType::_STRING) : ?>
+                    <?php elseif ($this->type?->datatype === AttributeValueType::_STRING) : ?>
                         <input id="iValue" type="text" name="value" value="<?= $this->printHtml($this->attribute->valueStr); ?>">
-                    <?php elseif ($this->type->datatype === AttributeValueType::_DATETIME) : ?>
+                    <?php elseif ($this->type?->datatype === AttributeValueType::_DATETIME) : ?>
                         <input id="iValue" type="text" name="value" value="<?= $this->attribute->valueDat->format('Y-m-d\TH:i'); ?>">
-                    <?php elseif ($this->type->datatype === AttributeValueType::_BOOL) : ?>
+                    <?php elseif ($this->type?->datatype === AttributeValueType::_BOOL) : ?>
                         <label class="checkbox" for="iValue">
                             <input type="checkbox" id="iValue" name="value" value="1"<?= $this->attribute->valueInt > 0 ? ' checked' : ''; ?>>
                             <span class="checkmark"></span>
                         </label>
+                    <?php else : ?>
+                        <input id="iValue" type="text" name="value" value="<?= $this->printHtml($this->attribute->getValue()); ?>">
                     <?php endif; ?>
                 </div>
             </div>
