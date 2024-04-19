@@ -52,7 +52,7 @@ echo $this->data['nav']->render(); ?>
                             <span class="checkmark"></span>
                         </label>
                     <?php else : ?>
-                        <input id="iValue" type="text" name="value" value="<?= $this->printHtml($this->attribute->getValue()); ?>">
+                        <input id="iValue" type="text" name="value" value="<?= $this->printHtml((string) $this->attribute->getValue()); ?>">
                     <?php endif; ?>
                 </div>
             </div>
