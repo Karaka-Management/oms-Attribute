@@ -36,6 +36,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
     public function testGetDefaultInt() : void
     {
         $type             = new AttributeType();
+        $type->datatype = AttributeValueType::_INT;
+
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1, AttributeValueType::_INT);
 
@@ -45,6 +47,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
     public function testGetDefaultFloatInt() : void
     {
         $type             = new AttributeType();
+        $type->datatype = AttributeValueType::_FLOAT_INT;
+
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1, AttributeValueType::_FLOAT_INT);
 
@@ -54,6 +58,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
     public function testGetDefaultBool() : void
     {
         $type             = new AttributeType();
+        $type->datatype = AttributeValueType::_BOOL;
+
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(false, AttributeValueType::_BOOL);
 
@@ -62,7 +68,9 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDefaultFloat() : void
     {
-        $type             = new AttributeType();
+        $type           = new AttributeType();
+        $type->datatype = AttributeValueType::_FLOAT;
+
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(1.23, AttributeValueType::_FLOAT);
 
@@ -72,6 +80,8 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
     public function testGetDefaultDateTime() : void
     {
         $type             = new AttributeType();
+        $type->datatype = AttributeValueType::_DATETIME;
+
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue($val = new \DateTime('now'), AttributeValueType::_DATETIME);
 
