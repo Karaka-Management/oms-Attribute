@@ -52,7 +52,7 @@ final class AttributeValueTest extends \PHPUnit\Framework\TestCase
         $value = new AttributeValue();
         $value->setValue(false, AttributeValueType::_BOOL);
 
-        self::assertFalse($value->getValue());
+        self::assertFalse((bool) $value->getValue());
     }
 
     public function testGetDefaultFloat() : void

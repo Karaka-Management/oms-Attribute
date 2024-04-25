@@ -135,8 +135,16 @@ class AttributeType implements \JsonSerializable
             $mValue = (float) $value;
         } elseif ($this->datatype === AttributeValueType::_DATETIME) {
             $mValue = $value instanceof \DateTime
-                ? $value
-                : new \DateTime((string) $value);
+                ? $value->format('Y-m-d H:i:s')
+                : $value;
+
+            foreach ($this->defaults as $default) {
+                if ($default->valueDat->format('Y-m-d H:i:s') === $mValue) {
+                    return $default;
+                }
+            }
+
+            return new NullAttributeValue();
         }
 
         foreach ($this->defaults as $default) {

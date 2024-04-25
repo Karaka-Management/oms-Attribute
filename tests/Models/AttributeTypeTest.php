@@ -63,7 +63,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
         $type->defaults[] = new AttributeValue();
         $type->defaults[0]->setValue(false, AttributeValueType::_BOOL);
 
-        self::assertFalse($type->getDefaultByValue(false)->getValue());
+        self::assertFalse((bool) $type->getDefaultByValue(false)->getValue());
     }
 
     public function testGetDefaultFloat() : void
