@@ -20,6 +20,7 @@ return ['Attribute' => [
     'Datatype'       => 'Datatype',
     'DefaultValues'  => 'Default Values',
     'IsRequired'     => 'Is required?',
+    'IsRepeatable'     => 'Is repeatable?',
     'Name'           => 'Name',
     'Pattern'        => 'Pattern',
     'Status'         => 'Status',

@@ -66,9 +66,17 @@ echo $this->data['nav']->render(); ?>
 
                             <div class="form-group">
                                 <label class="checkbox" for="iRequired">
-                                    <input id="iRequired" type="checkbox" name="required" value="1"<?= $this->attribute->isRequired ? ' checked' : ''; ?>>
+                                    <input id="iRequired" type="checkbox" name="is_required" value="1"<?= $this->attribute->isRequired ? ' checked' : ''; ?>>
                                     <span class="checkmark"></span>
                                     <?= $this->getHtml('IsRequired', 'Attribute', 'Backend'); ?>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox" for="iRepeatable">
+                                    <input id="iRepeatable" type="checkbox" name="is_repeatable" value="1"<?= $this->attribute->isRepeatable ? ' checked' : ''; ?>>
+                                    <span class="checkmark"></span>
+                                    <?= $this->getHtml('IsRepeatable', 'Attribute', 'Backend'); ?>
                                 </label>
                             </div>
 

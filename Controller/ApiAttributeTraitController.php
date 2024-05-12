@@ -43,7 +43,7 @@ trait ApiAttributeTraitController
      *
      * @since 1.0.0
      */
-    private function createAttributeFromRequest(RequestAbstract $request, AttributeType $type) : Attribute
+    public function createAttributeFromRequest(RequestAbstract $request, AttributeType $type) : Attribute
     {
         $new       = new Attribute();
         $new->ref  = (int) $request->getData('ref');
@@ -153,7 +153,7 @@ trait ApiAttributeTraitController
         $attrType                    = new AttributeType($request->getDataString('name') ?? '');
         $attrType->datatype          = AttributeValueType::tryFromValue($request->getDataInt('datatype')) ?? AttributeValueType::_STRING;
         $attrType->custom            = $request->getDataBool('custom') ?? false;
-        $attrType->repeatable        = $request->getDataBool('repeatable') ?? false;
+        $attrType->isRepeatable        = $request->getDataBool('is_repeatable') ?? false;
         $attrType->isInternal        = $request->getDataBool('internal') ?? false;
         $attrType->isRequired        = $request->getDataBool('is_required') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';

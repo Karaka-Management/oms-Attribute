@@ -63,7 +63,7 @@ class AttributeType implements \JsonSerializable
 
     public bool $isRequired = false;
 
-    public bool $repeatable = false;
+    public bool $isRepeatable = false;
 
     public bool $isInternal = false;
 
@@ -240,7 +240,7 @@ class AttributeType implements \JsonSerializable
             'custom'            => $this->custom,
             'isRequired'        => $this->isRequired,
             'isInternal'        => $this->isInternal,
-            'repeatable'        => $this->repeatable,
+            'isRepeatable'        => $this->isRepeatable,
         ];
     }
 

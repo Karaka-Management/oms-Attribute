@@ -43,6 +43,7 @@ final class AttributeTypeMapper extends DataMapperFactory
         'attribute_attr_type_custom'   => ['name' => 'attribute_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
         'attribute_attr_type_pattern'  => ['name' => 'attribute_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
         'attribute_attr_type_required' => ['name' => 'attribute_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
+        'attribute_attr_type_repeatable' => ['name' => 'attribute_attr_type_repeatable', 'type' => 'bool',   'internal' => 'isRepeatable'],
     ];
 
     /**
