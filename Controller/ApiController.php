@@ -246,7 +246,7 @@ final class ApiController extends Controller
         $attrType->datatype          = AttributeValueType::tryFromValue($request->getDataInt('datatype')) ?? AttributeValueType::_STRING;
         $attrType->custom            = $request->getDataBool('custom') ?? false;
         $attrType->isRequired        = $request->getDataBool('is_required') ?? false;
-        $attrType->isRepeatable        = $request->getDataBool('is_repeatable') ?? false;
+        $attrType->isRepeatable      = $request->getDataBool('is_repeatable') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';
         $attrType->setL11n(
             $request->getDataString('title') ?? '',

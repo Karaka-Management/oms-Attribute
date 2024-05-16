@@ -240,7 +240,7 @@ class AttributeType implements \JsonSerializable
             'custom'            => $this->custom,
             'isRequired'        => $this->isRequired,
             'isInternal'        => $this->isInternal,
-            'isRepeatable'        => $this->isRepeatable,
+            'isRepeatable'      => $this->isRepeatable,
         ];
     }
 

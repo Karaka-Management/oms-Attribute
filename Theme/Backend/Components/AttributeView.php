@@ -85,11 +85,11 @@ class AttributeView extends View
     public function render(mixed ...$data) : string
     {
         /** @var array{0:\Modules\Attribute\Models\Attribute[]} $data */
-        $this->attributes     = $data[0];
-        $this->attributeTypes = $data[1];
-        $this->units          = $data[2];
-        $this->apiUri         = $data[3];
-        $this->refId          = $data[4];
+        $this->attributes     = $data[0] ?? [];
+        $this->attributeTypes = $data[1] ?? [];
+        $this->units          = $data[2] ?? [];
+        $this->apiUri         = $data[3] ?? '';
+        $this->refId          = $data[4] ?? 0;
 
         return parent::render();
     }
