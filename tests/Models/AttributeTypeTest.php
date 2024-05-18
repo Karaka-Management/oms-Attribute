@@ -109,7 +109,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
                 'custom'            => false,
                 'isRequired'        => false,
                 'isInternal'        => false,
-                'repeatable'        => false,
+                'isRepeatable'        => false,
             ],
             $type->toArray()
         );
@@ -127,7 +127,7 @@ final class AttributeTypeTest extends \PHPUnit\Framework\TestCase
                 'custom'            => false,
                 'isRequired'        => false,
                 'isInternal'        => false,
-                'repeatable'        => false,
+                'isRepeatable'        => false,
             ],
             $type->jsonSerialize()
         );
