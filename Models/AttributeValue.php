@@ -6,7 +6,7 @@
  *
  * @package   Modules\Attribute\Models
  * @copyright Dennis Eichhorn
- * @license   OMS License 2.0
+ * @license   OMS License 2.2
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -23,7 +23,7 @@ use phpOMS\Localization\ISO639x1Enum;
  * The relation with the type is defined in the Attribute class.
  *
  * @package Modules\Attribute\Models
- * @license OMS License 2.0
+ * @license OMS License 2.2
  * @link    https://jingga.app
  * @since   1.0.0
  */
