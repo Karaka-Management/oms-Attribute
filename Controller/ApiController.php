@@ -176,9 +176,9 @@ final class ApiController extends Controller
     private function createAttributeTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
         $attrL11n           = new BaseStringL11n();
-        $attrL11n->ref      = $request->getDataInt('type') ?? 0;
+        $attrL11n->ref      = $request->getDataInt('ref') ?? 0;
         $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
-        $attrL11n->content  = $request->getDataString('title') ?? '';
+        $attrL11n->content  = $request->getDataString('content') ?? '';
 
         return $attrL11n;
     }
@@ -195,8 +195,8 @@ final class ApiController extends Controller
     private function validateAttributeTypeL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-            || ($val['type'] = !$request->hasData('type'))
+        if (($val['content'] = !$request->hasData('content'))
+            || ($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }
@@ -249,7 +249,7 @@ final class ApiController extends Controller
         $attrType->isRepeatable      = $request->getDataBool('is_repeatable') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';
         $attrType->setL11n(
-            $request->getDataString('title') ?? '',
+            $request->getDataString('content') ?? '',
             ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
         );
         $attrType->setFields($request->getDataInt('fields') ?? 0);
@@ -269,7 +269,7 @@ final class ApiController extends Controller
     private function validateAttributeTypeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
+        if (($val['content'] = !$request->hasData('content'))
             || ($val['name'] = !$request->hasData('name'))
         ) {
             return $val;
@@ -335,9 +335,9 @@ final class ApiController extends Controller
         $attrValue->isDefault = $request->getDataBool('default') ?? false;
         $attrValue->setValue($request->getData('value'), $type->datatype);
 
-        if ($request->hasData('title')) {
+        if ($request->hasData('content')) {
             $attrValue->setL11n(
-                $request->getDataString('title') ?? '',
+                $request->getDataString('content') ?? '',
                 ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
             );
         }
@@ -405,9 +405,9 @@ final class ApiController extends Controller
     private function createAttributeValueL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
         $attrL11n           = new BaseStringL11n();
-        $attrL11n->ref      = $request->getDataInt('value') ?? 0;
+        $attrL11n->ref      = $request->getDataInt('ref') ?? 0;
         $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
-        $attrL11n->content  = $request->getDataString('title') ?? '';
+        $attrL11n->content  = $request->getDataString('content') ?? '';
 
         return $attrL11n;
     }
@@ -424,8 +424,8 @@ final class ApiController extends Controller
     private function validateAttributeValueL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-            || ($val['value'] = !$request->hasData('value'))
+        if (($val['content'] = !$request->hasData('content'))
+            || ($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }

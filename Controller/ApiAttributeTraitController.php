@@ -111,9 +111,9 @@ trait ApiAttributeTraitController
     private function createAttributeTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
         $attrL11n           = new BaseStringL11n();
-        $attrL11n->ref      = $request->getDataInt('type') ?? 0;
+        $attrL11n->ref      = $request->getDataInt('ref') ?? 0;
         $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
-        $attrL11n->content  = $request->getDataString('title') ?? '';
+        $attrL11n->content  = $request->getDataString('content') ?? '';
 
         return $attrL11n;
     }
@@ -130,8 +130,8 @@ trait ApiAttributeTraitController
     private function validateAttributeTypeL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-            || ($val['type'] = !$request->hasData('type'))
+        if (($val['content'] = !$request->hasData('content'))
+            || ($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }
@@ -158,7 +158,7 @@ trait ApiAttributeTraitController
         $attrType->isRequired        = $request->getDataBool('is_required') ?? false;
         $attrType->validationPattern = $request->getDataString('validation_pattern') ?? '';
         $attrType->setL11n(
-            $request->getDataString('title') ?? '',
+            $request->getDataString('content') ?? '',
             ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
         );
         $attrType->setFields($request->getDataInt('fields') ?? 0);
@@ -178,7 +178,7 @@ trait ApiAttributeTraitController
     private function validateAttributeTypeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
+        if (($val['content'] = !$request->hasData('content'))
             || ($val['name'] = !$request->hasData('name'))
         ) {
             return $val;
@@ -203,9 +203,9 @@ trait ApiAttributeTraitController
         $attrValue->unit      = $request->getDataString('unit') ?? '';
         $attrValue->setValue($request->getDataString('value'), $type->datatype);
 
-        if ($request->hasData('title')) {
+        if ($request->hasData('content')) {
             $attrValue->setL11n(
-                $request->getDataString('title') ?? '',
+                $request->getDataString('content') ?? '',
                 ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
             );
         }
@@ -246,9 +246,9 @@ trait ApiAttributeTraitController
     private function createAttributeValueL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
         $attrL11n           = new BaseStringL11n();
-        $attrL11n->ref      = $request->getDataInt('value') ?? 0;
+        $attrL11n->ref      = $request->getDataInt('ref') ?? 0;
         $attrL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
-        $attrL11n->content  = $request->getDataString('title') ?? '';
+        $attrL11n->content  = $request->getDataString('content') ?? '';
 
         return $attrL11n;
     }
@@ -265,8 +265,8 @@ trait ApiAttributeTraitController
     private function validateAttributeValueL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-            || ($val['value'] = !$request->hasData('value'))
+        if (($val['content'] = !$request->hasData('content'))
+            || ($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }
