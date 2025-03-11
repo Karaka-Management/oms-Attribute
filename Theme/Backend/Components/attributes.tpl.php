@@ -20,7 +20,6 @@ $languages = ISO639Enum::getConstants();
 $types     = $this->attributeTypes;
 $units     = $this->units;
 ?>
-
 <div class="col-xs-12 col-md-6">
     <section class="portlet">
         <form id="attributeForm" action="<?= UriFactory::build($this->apiUri); ?>" method="post"
